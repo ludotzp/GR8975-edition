@@ -1,23 +1,23 @@
 ---
-layout: default
+layout: default <!--define the layout (also, drama, poems)-->
 title: "GR8975-edition"
 ---
-<div class="introduction">
+<div class="introduction"> <!--    just to give a name to the class (less specific than id)-->
   <h1>Hi.</h1>
 <!--<p> Ed is a <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> theme designed for textual editors based on <a href="http://go-dh.github.io/mincomp/">minimal computing principles</a>, and focused on legibility, durability, ease and flexibility. Our underlying technology is easy to learn and teach, and can produce beautifully rendered scholarly or reading editions of texts meant to last. To start using Ed, please see <a href="{{ site.baseurl }}/documentation/">our documentation</a> for installation instructions and more. To learn more about the ideas behind Ed and a list of current features see our <a href="{{ site.baseurl }}/about/">about</a> section. To see Ed in action, we've provided some sample minimal editions for you below.</p>-->
 </div>
 
 <hr>
 
-<div class="toc">
+<div class="toc"> 
 
   <h2>Table of Contents</h2>
   <ul class="post">
-  {% for item in site.texts do %}
+  {% for item in site.texts do %} <!--  {% give the possibility to include function in the html code, don't know which language it is-->
   
     <li class="post-title">
-      <a href="{{ site.baseurl }}{{ item.url }}">
-        <i>{{ item.title }}</i> {{item.folio}}{% if item.annotation == true %} * {% endif %}
+      <a href="{{ site.baseurl }}{{ item.url }}"> <!--why is it item.url and site.baseurl? -->
+        <i>{{ item.title }}</i> {{item.folio}}{% if item.annotation == true %} * {% endif %} <!--* for annotations -->
       </a>
     </li>
   {% endfor %}
