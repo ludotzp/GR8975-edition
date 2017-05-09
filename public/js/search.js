@@ -82,10 +82,10 @@ function doSearch() {
     var purp;
     var searchitem = '<div class="result"><a href="{{ site.baseurl }}'+store[ref].link+'?q='+query+'">'+store[ref].title+'</a><p>';
     for (var activity in store[ref].activities){
-      act += '<a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-activities/#'+{{activity|slugify}}+'| slugify}}"><span class="post-tag">'+activity+'</span></a>';
+      act += '<a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-activities/#'+{{activities[activity]|slugify}}+'| slugify}}"><span class="post-tag">'+activities[activity]+'</span></a>';
     }
         for (var purpose in store[ref].purposes){
-      purp += '<a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-purposes/#'+{{purpose|slugify}}+'"><span class="post-tag-2">'+purpose+'</span></a>';
+      purp += '<a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-purposes/#'+{{purposes[purpose]|slugify}}+'"><span class="post-tag-2">'+purposes[purpose]+'</span></a>';
        }
     var end = '</p><p>'+store[ref].excerpt+'</p></div>';
     searchitem += act + purp + end;
