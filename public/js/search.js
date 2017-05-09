@@ -38,8 +38,8 @@ var store = [{% for text in site.texts %}{
   "author": {{text.author | jsonify}},
   "layout": {{ text.layout | jsonify }},
   "link": {{text.url | jsonify}},
-  "activities": {{text.activities | jsonify}},
-  "purposes": {{text.purposes | jsonify}},
+  "activities": {{text.activities}},
+  "purposes": {{text.purposes}},
   "excerpt": {{text.content | strip_html |remove: "-"| truncatewords: 20 | jsonify}}
 }
 {% unless forloop.last %},{% endunless %}{% endfor %}]
