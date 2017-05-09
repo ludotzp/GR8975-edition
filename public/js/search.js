@@ -10,7 +10,7 @@ var index = elasticlunr(function () {
   this.addField('author')
   this.addField('layout')
   this.addField('content')
-  this.addField('tags')
+  this.addField('activities')
   this.setRef('id')
 });
 
@@ -23,7 +23,7 @@ index.addDoc({
   author: {{text.author | jsonify}},
   layout: {{text.layout | jsonify}},
   content: {{text.content | jsonify | strip_html}},
-  tags: {{text.activities | jsonify}},
+  activities: {{text.activities | jsonify}},
   id: {{count}}
 });{% assign count = count | plus: 1 %}{% endfor %}
 console.log( jQuery.type(index) );
@@ -36,7 +36,7 @@ var store = [{% for text in site.texts %}{
   "author": {{text.author | jsonify}},
   "layout": {{ text.layout | jsonify }},
   "link": {{text.url | jsonify}},
-  "tags": {{text.activities | replace: "," " " | jsonify}},
+  "activities": {{text.activities | replace: "," " " | jsonify}},
   "excerpt": {{text.content | strip_html |remove: "-"| truncatewords: 20 | jsonify}}
 }
 {% unless forloop.last %},{% endunless %}{% endfor %}]
@@ -75,7 +75,7 @@ function doSearch() {
   //Loop through, match, and add results
   for (var item in result) {
     var ref = result[item].ref;
-    var searchitem = '<div class="result"><a href="{{ site.baseurl }}'+store[ref].link+'?q='+query+'">'+store[ref].title+'</a><p class="small">'+store[ref].tags+'</p>'+store[ref].excerpt+'</p></div>';
+    var searchitem = '<div class="result"><a href="{{ site.baseurl }}'+store[ref].link+'?q='+query+'">'+store[ref].title+'</a><p class="small">'+store[ref].activities+'</p>'+store[ref].excerpt+'</p></div>';
     resultdiv.append(searchitem);
   }
 }
