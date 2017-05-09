@@ -24,8 +24,8 @@ index.addDoc({
   author: {{text.author | jsonify}},
   layout: {{text.layout | jsonify}},
   content: {{text.content | jsonify | strip_html}},
-  activities: {text.activities |default: ""},
-  purposes: {text.purposes |default: ""},
+  activities: {{text.activities |default: ""}},
+  purposes: {{text.purposes |default: ""}},
   id: {{count}}
 });{% assign count = count | plus: 1 %}{% endfor %}
 console.log( jQuery.type(index) );
@@ -38,8 +38,8 @@ var store = [{% for text in site.texts %}{
   "author": {{text.author | jsonify}},
   "layout": {{ text.layout | jsonify }},
   "link": {{text.url | jsonify}},
-  "activities": {text.activities |default: ""},
-  "purposes": {text.purposes |default: ""},
+  "activities": {{text.activities |default: ""}},
+  "purposes": {{text.purposes |default: ""}},
   "excerpt": {{text.content | strip_html |remove: "-"| truncatewords: 20 | jsonify}}
 }
 {% unless forloop.last %},{% endunless %}{% endfor %}]
