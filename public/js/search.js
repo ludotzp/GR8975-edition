@@ -75,7 +75,7 @@ function doSearch() {
   //Loop through, match, and add results
   for (var item in result) {
     var ref = result[item].ref;
-    var searchitem = '<div class="result"><a href="{{ site.baseurl }}'+store[ref].link+'?q='+query+'">'+store[ref].title+'</a><p class="small">'+store[ref].activities+'</p>'+store[ref].excerpt+'</p></div>';
+    var searchitem = '<div class="result"><a href="{{ site.baseurl }}'+store[ref].link+'?q='+query+'">'+store[ref].title+'</a><a class="tag small" href="#{{'+store[ref].activities+ '| slugify }}"><span class="post-tag"> {{'+store[ref].activities+'}} </span></a><p>'+store[ref].excerpt+'</o></div>';
     resultdiv.append(searchitem);
   }
 }
