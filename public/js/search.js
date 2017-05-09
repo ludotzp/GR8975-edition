@@ -38,7 +38,7 @@ var store = [{% for text in site.texts %}{
   "author": {{text.author | jsonify}},
   "layout": {{ text.layout | jsonify }},
   "link": {{text.url | jsonify}},
-  var activities = [{% for text in site.texts %} { jsonify}},
+  "activities": {{text.activities | jsonify}},
   "purposes": {{text.purposes | jsonify}},
   "excerpt": {{text.content | strip_html |remove: "-"| truncatewords: 20 | jsonify}}
 }
