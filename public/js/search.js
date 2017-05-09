@@ -36,7 +36,7 @@ var store = [{% for text in site.texts %}{
   "author": {{text.author | jsonify}},
   "layout": {{ text.layout | jsonify }},
   "link": {{text.url | jsonify}},
-  "tags": {{text.activities | jsonify}},
+  "tags": {{text.activities | replace: "," " " | jsonify}},
   "excerpt": {{text.content | strip_html |remove: "-"| truncatewords: 20 | jsonify}}
 }
 {% unless forloop.last %},{% endunless %}{% endfor %}]
