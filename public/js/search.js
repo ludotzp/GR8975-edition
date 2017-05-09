@@ -10,6 +10,7 @@ var index = elasticlunr(function () {
   this.addField('author')
   this.addField('layout')
   this.addField('content')
+  this.addField('tags')
   this.setRef('id')
 });
 
@@ -22,6 +23,7 @@ index.addDoc({
   author: {{text.author | jsonify}},
   layout: {{text.layout | jsonify}},
   content: {{text.content | jsonify | strip_html}},
+  tags: {{text.tags | jsonify}},
   id: {{count}}
 });{% assign count = count | plus: 1 %}{% endfor %}
 console.log( jQuery.type(index) );
@@ -34,6 +36,7 @@ var store = [{% for text in site.texts %}{
   "author": {{text.author | jsonify}},
   "layout": {{ text.layout | jsonify }},
   "link": {{text.url | jsonify}},
+  "tags": {{text.tags | jsonify}},
   "excerpt": {{text.content | strip_html |remove: "-"| truncatewords: 20 | jsonify}}
 }
 {% unless forloop.last %},{% endunless %}{% endfor %}]
