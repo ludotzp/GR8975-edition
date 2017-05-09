@@ -80,7 +80,7 @@ function doSearch() {
     var ref = result[item].ref;
     for (var activity in store[ref].activities){
       for (var purpose in store[ref].purposes){
-        var searchitem = '<div class="result"><a href="{{ site.baseurl }}'+store[ref].link+'?q='+query+'">'+store[ref].title+'</a><p><a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-activities/#{{'+activity+'| slugify}}"><span class="post-tag">'+activity+'</span></a></p><p><a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-purposes/#{{'+purpose+' | slugify}}"><span class="post-tag">'+purpose+'</span></a></p><p>'+store[ref].excerpt+'</p></div>';
+        var searchitem = '<div class="result"><a href="{{ site.baseurl }}'+store[ref].link+'?q='+query+'">'+store[ref].title+'</a><p><a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-activities/#{{'+activity+'| slugify}}"><span class="post-tag">'+activity+'</span></a><a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-purposes/#{{'+purpose+' | slugify}}"><span class="post-tag">'+purpose+'</span></a></p><p>'+store[ref].excerpt+'</p></div>';
       }
     }
         resultdiv.append(searchitem);
