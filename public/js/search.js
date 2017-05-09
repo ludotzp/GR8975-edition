@@ -69,7 +69,7 @@ function doSearch() {
                                              
   resultdiv.empty();
   if (result.length == 0) {
-    resultdiv.append('<p class="">No results found.3</p>');
+    resultdiv.append('<p class="">No results found.</p>');
   } else if (result.length == 1) {
     resultdiv.append('<p class="">Found '+result.length+' result</p>');
   } else {
