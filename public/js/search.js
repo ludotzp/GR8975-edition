@@ -11,6 +11,7 @@ var index = elasticlunr(function () {
   this.addField('layout')
   this.addField('content')
   this.addField('activities')
+  this.addField('purpose')
   this.setRef('id')
 });
 
@@ -24,6 +25,7 @@ index.addDoc({
   layout: {{text.layout | jsonify}},
   content: {{text.content | jsonify | strip_html}},
   activities: {{text.activities | jsonify}},
+  purpose: {{text.purposes | jsonify}},
   id: {{count}}
 });{% assign count = count | plus: 1 %}{% endfor %}
 console.log( jQuery.type(index) );
@@ -37,6 +39,7 @@ var store = [{% for text in site.texts %}{
   "layout": {{ text.layout | jsonify }},
   "link": {{text.url | jsonify}},
   "activities": {{text.activities | replace: "," " " | jsonify}},
+  "purpose": {{text.purposes | jsonify}},
   "excerpt": {{text.content | strip_html |remove: "-"| truncatewords: 20 | jsonify}}
 }
 {% unless forloop.last %},{% endunless %}{% endfor %}]
@@ -75,7 +78,7 @@ function doSearch() {
   //Loop through, match, and add results
   for (var item in result) {
     var ref = result[item].ref;
-    var searchitem = '<div class="result"><a href="{{ site.baseurl }}'+store[ref].link+'?q='+query+'">'+store[ref].title+'</a><a class="tag small" href="#{{'+store[ref].activities+ '| slugify }}"><span class="post-tag"> {{'+store[ref].activities+'}} </span></a><p>'+store[ref].excerpt+'</o></div>';
+    var searchitem = '<div class="result"><a href="{{ site.baseurl }}'+store[ref].link+'?q='+query+'">'+store[ref].title+'</a><a class="tag small" href="#{{'+store[ref].activities+'| slugify }}"><span class="post-tag"> {{'+store[ref].activities+'}} </span></a><p>'+store[ref].excerpt+'</o></div>';
     resultdiv.append(searchitem);
   }
 }
