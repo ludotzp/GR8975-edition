@@ -69,7 +69,7 @@ function doSearch() {
                                              
   resultdiv.empty();
   if (result.length == 0) {
-    resultdiv.append('<p class="">No results found.1</p>');
+    resultdiv.append('<p class="">No results found.</p>');
   } else if (result.length == 1) {
     resultdiv.append('<p class="">Found '+result.length+' result</p>');
   } else {
@@ -81,17 +81,14 @@ function doSearch() {
     var act;
     var purp;
     var searchitem = '<div class="result"><a href="{{ site.baseurl }}'+store[ref].link+'?q='+query+'">'+store[ref].title+'</a><p>';
-    resultdiv.append(searchitem);
     for (var activity in store[ref].activities){
       act = act.concat('<a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-activities/#{{'+activity+'| slugify}}"><span class="post-tag">'+activity+'</span></a>');
-      resultdiv.append(act);
     }
         for (var purpose in store[ref].purposes){
       purp = purp.concat('<a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-purposes/#{{'+purpose+' | slugify}}"><span class="post-tag-2">'+purpose+'</span></a>');
-     resultdiv.append(purp);
-        }
+       }
     var end = '</p><p>'+store[ref].excerpt+'</p></div>';
-    searchitem.concat(act, purp, end);
+    searchitem = searchitem.concat(act, purp, end);
     resultdiv.append(searchitem);
   }
 }
