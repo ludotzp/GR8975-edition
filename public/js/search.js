@@ -25,7 +25,7 @@ index.addDoc({
   layout: {{text.layout | jsonify}},
   content: {{text.content | jsonify | strip_html}},
   activities: {{text.activities | jsonify}},
-  purpose: {{text.purposes | jsonify}},
+  purposes: {{text.purposes | jsonify}},
   id: {{count}}
 });{% assign count = count | plus: 1 %}{% endfor %}
 console.log( jQuery.type(index) );
@@ -38,8 +38,8 @@ var store = [{% for text in site.texts %}{
   "author": {{text.author | jsonify}},
   "layout": {{ text.layout | jsonify }},
   "link": {{text.url | jsonify}},
-  "activities": {{text.activities | remove: "," | jsonify}},
-  "purpose": {{text.purposes | jsonify}},
+  "activities": {{text.activities | jsonify}},
+  "purposes": {{text.purposes | jsonify}},
   "excerpt": {{text.content | strip_html |remove: "-"| truncatewords: 20 | jsonify}}
 }
 {% unless forloop.last %},{% endunless %}{% endfor %}]
@@ -78,8 +78,12 @@ function doSearch() {
   //Loop through, match, and add results
   for (var item in result) {
     var ref = result[item].ref;
-    var searchitem = '<div class="result"><a href="{{ site.baseurl }}'+store[ref].link+'?q='+query+'">'+store[ref].title+'</a><p><a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-activities/#'+store[ref].activities+'"><span class="post-tag">'+store[ref].activities+'</span></a></p><p>'+store[ref].excerpt+'</p></div>';
-    resultdiv.append(searchitem);
+    for (var activity in store[ref].activities){
+      for (var purpose in store[ref].purposes){
+        var searchitem = '<div class="result"><a href="{{ site.baseurl }}'+store[ref].link+'?q='+query+'">'+store[ref].title+'</a><p><a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-activities/#'+activity'"><span class="post-tag">'+activity+'</span></a></p><p><a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-purposes/#'+purpose+'"><span class="post-tag">'+purpose+'</span></a></p>'+store[ref].excerpt+'</p></div>';
+      }
+    }
+        resultdiv.append(searchitem);
   }
 }
 
