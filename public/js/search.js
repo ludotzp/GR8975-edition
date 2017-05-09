@@ -69,7 +69,7 @@ function doSearch() {
                                              
   resultdiv.empty();
   if (result.length == 0) {
-    resultdiv.append('<p class="">No results found.</p>');
+    resultdiv.append('<p class="">No results found.1</p>');
   } else if (result.length == 1) {
     resultdiv.append('<p class="">Found '+result.length+' result</p>');
   } else {
@@ -82,7 +82,7 @@ function doSearch() {
     var purp;
     var searchitem = '<div class="result"><a href="{{ site.baseurl }}'+store[ref].link+'?q='+query+'">'+store[ref].title+'</a><p>';
     for (var activity in store[ref].activities){
-      act += '<a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-activities/#'+{{store[ref].activities[activity]|slugify}}+'| slugify}}"><span class="post-tag">'+activities[activity]+'</span></a>';
+      act += '<a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-activities/#'+{{store[ref].activities[activity]|slugify}}+'"><span class="post-tag">'+activities[activity]+'</span></a>';
     }
         for (var purpose in store[ref].purposes){
       purp += '<a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-purposes/#'+{{store[ref].purposes[purpose]|slugify}}+'"><span class="post-tag-2">'+purposes[purpose]+'</span></a>';
