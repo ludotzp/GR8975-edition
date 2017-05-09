@@ -11,7 +11,7 @@ var index = elasticlunr(function () {
   this.addField('layout')
   this.addField('content')
   this.addField('activities')
-  this.addField('purpose')
+  this.addField('purposes')
   this.setRef('id')
 });
 
