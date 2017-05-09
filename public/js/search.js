@@ -91,7 +91,7 @@ function doSearch() {
     searchitem += act + purp + end;
     resultdiv.append(searchitem);
   }
-}
+
 
 $(document).ready(function() {
   if (qd.q) {
