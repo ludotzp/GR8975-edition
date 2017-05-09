@@ -90,6 +90,7 @@ function doSearch() {
     var end = '</p><p>'+store[ref].excerpt+'</p></div>';
     searchitem += act + purp + end;
     resultdiv.append(searchitem);
+   }
   }
 
 
