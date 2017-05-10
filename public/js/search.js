@@ -78,12 +78,11 @@ function doSearch() {
   //Loop through, match, and add results
   for (var item in result) {
     var ref = result[item].ref;
-    var act;
-    var purp;
+    var act = "";
+    var purp = "";
     var searchitem = '<div class="result"><a href="{{ site.baseurl }}'+store[ref].link+'?q='+query+'">'+store[ref].title+'</a><p>';
     for (var i = 0, c = store[ref].activities.length; i < c; i++) {
-	
-         act += '<a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-activities/#'+store[ref].activities[i]+'"><span class="post-tag">'+store[ref].activities[i]+'</span></a>';
+	 act += '<a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-activities/#'+store[ref].activities[i]+'"><span class="post-tag">'+store[ref].activities[i]+'</span></a>';
       }
     for (var i = 0, c = store[ref].purposes.length; i < c; i++) {
         purp += '<a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-purposes/#'+store[ref].purposes[i]+'"><span class="post-tag-2">'+store[ref].purposes[i]+'</span></a>';
