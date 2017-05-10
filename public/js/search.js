@@ -24,8 +24,8 @@ index.addDoc({
   author: {{text.author | jsonify}},
   layout: {{text.layout | jsonify}},
   content: {{text.content | jsonify | strip_html}},
-  activities: {{text.activities |default: "null"}},
-  purposes: {{text.purposes |default: "null"}},
+  activities: {{text.activities |jsonify}},
+  purposes: {{text.purposes |jsonify}},
   id: {{count}}
 });{% assign count = count | plus: 1 %}{% endfor %}
 console.log( jQuery.type(index) );
@@ -38,8 +38,8 @@ var store = [{% for text in site.texts %}{
   "author": {{text.author | jsonify}},
   "layout": {{ text.layout | jsonify }},
   "link": {{text.url | jsonify}},
-  "activities": {{text.activities |default: "null"}},
-  "purposes": {{text.purposes |default: "null"}},
+  "activities": {{text.activities |jsonify}},
+  "purposes": {{text.purposes |jsonidy}},
   "excerpt": {{text.content | strip_html |remove: "-"| truncatewords: 20 | jsonify}}
 }
 {% unless forloop.last %},{% endunless %}{% endfor %}]
@@ -82,13 +82,13 @@ function doSearch() {
     var purp;
     var searchitem = '<div class="result"><a href="{{ site.baseurl }}'+store[ref].link+'?q='+query+'">'+store[ref].title+'</a><p>';
     for (var activity in store[ref].activities){
-      if (activity != "null"){
+     
       act += '<a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-activities/#'+activity+'"><span class="post-tag">'+activity+'</span></a>';
-      }}
+      }
         for (var purpose in store[ref].purposes){
-           if (purpose != "null"){
+         
       purp += '<a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-purposes/#'+purpose+'"><span class="post-tag-2">'+purpose+'</span></a>';
-           }}
+           }
     var end = '</p><p>'+store[ref].excerpt+'</p></div>';
     searchitem += act + purp + end;
     resultdiv.append(searchitem);
