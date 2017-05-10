@@ -25,7 +25,7 @@ index.addDoc({
   layout: {{text.layout | jsonify}},
   content: {{text.content | jsonify | strip_html}},
   activities: {{text.activities |default: null}},
-  purposes: {{text.purposes |default: null},
+  purposes: {{text.purposes |default: null}},
   id: {{count}}
 });{% assign count = count | plus: 1 %}{% endfor %}
 console.log( jQuery.type(index) );
