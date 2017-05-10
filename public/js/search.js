@@ -81,14 +81,13 @@ function doSearch() {
     var act;
     var purp;
     var searchitem = '<div class="result"><a href="{{ site.baseurl }}'+store[ref].link+'?q='+query+'">'+store[ref].title+'</a><p>';
-    for (var activity in result[item].activities){
-     
-      act += '<a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-activities/#'+activity+'"><span class="post-tag">'+activity+'</span></a>';
+    for (var i = 0, c = store[ref].activities.length; i < c; i++) {
+	
+         act += '<a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-activities/#'+store[ref].activities[i]+'"><span class="post-tag">'+store[ref].activities[i]+'</span></a>';
       }
-        for (var purpose in result[item].purposes){
-         
-      purp += '<a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-purposes/#'+purpose+'"><span class="post-tag-2">'+purpose+'</span></a>';
-           }
+    for (var i = 0, c = store[ref].purposes.length; i < c; i++) {
+        purp += '<a class="tag small" href="{{site-baseurl}}/GR8975-edition/list-purposes/#'+store[ref].purposes[i]+'"><span class="post-tag-2">'+store[ref].purposes[i]+'</span></a>';
+     }
     var end = '</p><p>'+store[ref].excerpt+'</p></div>';
     searchitem += act + purp + end;
     resultdiv.append(searchitem);
