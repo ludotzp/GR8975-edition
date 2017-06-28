@@ -4,35 +4,30 @@
 // Based on a script by Kathie Decora : katydecorah.com/code/lunr-and-jekyll/
 
 //Create the lunr index for the search
-var count = 0;
+
 var index = lunr(function () {
-  this.field('title')
-  this.field('author')
-  this.field('layout')
-  this.field('content')
-  this.field('activities')
-  this.field('purposes')
-  this.ref('id')
- 
-  for (text in site.texts){
-	this.add({
-		title: {{text.title | jsonify}},
-		author: {{text.author | jsonify}},
-		layout: {{text.layout | jsonify}},
-		content: {{text.content | jsonify | strip_html}},
-		activities: {{text.activities |jsonify}},
-		purposes: {{text.purposes |jsonify}},
-		id: {{count}}
-		});  
- 	count++;
-  }
+  this.addField('title')
+  this.addField('author')
+  this.addField('layout')
+  this.addField('content')
+  this.addField('activities')
+  this.addField('purposes')
+  this.setRef('id')
 });
 
 //Add to this index the proper metadata from the Jekyll content
 
 
 {% assign count = 0 %}{% for text in site.texts %}
-{% assign count = count | plus: 1 %}{% endfor %}
+index.add({
+  title: {{text.title | jsonify}},
+  author: {{text.author | jsonify}},
+  layout: {{text.layout | jsonify}},
+  content: {{text.content | jsonify | strip_html}},
+  activities: {{text.activities |jsonify}},
+  purposes: {{text.purposes |jsonify}},
+  id: {{count}}
+});{% assign count = count | plus: 1 %}{% endfor %}
 console.log( jQuery.type(index) );
 
 // Builds reference data (maybe not necessary for us, to check)
