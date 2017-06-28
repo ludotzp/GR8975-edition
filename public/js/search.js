@@ -59,13 +59,7 @@ function doSearch() {
   var query = $('input#search').val();
 
   //The search is then launched on the index built with Lunr
-  var result = index.search(query, {
-    fields: {
-        title: {boost: 2},
-        content: {boost: 1}
-    },
-    bool: "OR"
-});
+  var result = index.search(query);
                                              
   resultdiv.empty();
   if (result.length == 0) {
