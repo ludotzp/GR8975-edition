@@ -4,7 +4,7 @@
 // Based on a script by Kathie Decora : katydecorah.com/code/lunr-and-jekyll/
 
 //Create the lunr index for the search
-
+var count = 0;
 var index = lunr(function () {
   this.field('title')
   this.field('author')
@@ -13,13 +13,9 @@ var index = lunr(function () {
   this.field('activities')
   this.field('purposes')
   this.ref('id')
-});
-
-//Add to this index the proper metadata from the Jekyll content
-
-
-{% assign count = 0 %}{% for text in site.texts %}
-index.add({
+ 
+  for (text in site.texts){
+	index.add({
   title: {{text.title | jsonify}},
   author: {{text.author | jsonify}},
   layout: {{text.layout | jsonify}},
@@ -27,7 +23,16 @@ index.add({
   activities: {{text.activities |jsonify}},
   purposes: {{text.purposes |jsonify}},
   id: {{count}}
-});{% assign count = count | plus: 1 %}{% endfor %}
+});  
+ count++;
+  }
+});
+
+//Add to this index the proper metadata from the Jekyll content
+
+
+{% assign count = 0 %}{% for text in site.texts %}
+{% assign count = count | plus: 1 %}{% endfor %}
 console.log( jQuery.type(index) );
 
 // Builds reference data (maybe not necessary for us, to check)
