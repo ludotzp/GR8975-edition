@@ -15,16 +15,16 @@ var index = lunr(function () {
   this.ref('id')
  
   for (text in site.texts){
-	index.add({
-  title: {{text.title | jsonify}},
-  author: {{text.author | jsonify}},
-  layout: {{text.layout | jsonify}},
-  content: {{text.content | jsonify | strip_html}},
-  activities: {{text.activities |jsonify}},
-  purposes: {{text.purposes |jsonify}},
-  id: {{count}}
-});  
- count++;
+	this.add({
+		title: {{text.title | jsonify}},
+		author: {{text.author | jsonify}},
+		layout: {{text.layout | jsonify}},
+		content: {{text.content | jsonify | strip_html}},
+		activities: {{text.activities |jsonify}},
+		purposes: {{text.purposes |jsonify}},
+		id: {{count}}
+		});  
+ 	count++;
   }
 });
 
