@@ -5,14 +5,14 @@
 
 //Create the lunr index for the search
 
-var index = elasticlunr(function () {
-  this.addField('title')
-  this.addField('author')
-  this.addField('layout')
-  this.addField('content')
-  this.addField('activities')
-  this.addField('purposes')
-  this.setRef('id')
+var index = lunr(function () {
+  this.field('title')
+  this.field('author')
+  this.field('layout')
+  this.field('content')
+  this.field('activities')
+  this.field('purposes')
+  this.ref('id')
 });
 
 //Add to this index the proper metadata from the Jekyll content
